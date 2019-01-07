@@ -4,8 +4,7 @@ import snapShot from './vue-snapshot';
 import { routeQueryKey, updatedExcludes, stringify, parse, getRouteQuery, getFullPath } from './util';
 
 const update = (vm, routeQuery) => {
-  const dataVm = routeQuery[vm._uid]
-  console.log(dataVm);
+  const dataVm = routeQuery[vm._uid];
   for (const k in dataVm) {
     vm[k] = dataVm[k];
   }
@@ -19,8 +18,13 @@ export function onUpdated() {
 }
 
 export function onActivated() {
-  addRouteQuery(this.$children[0]);
+  addRouteQueryChildren(this.$children[0]);
 }
+
+export const addRouteQueryChildren = (vm) => {
+  addRouteQuery(vm);
+  vm.$children.forEach(addRouteQueryChildren)
+};
 
 export const addActivated = (vm) => {
   let activated = vm.$options.activated;
@@ -72,7 +76,7 @@ export const addRouteQuery = (vm) => {
   history.replaceState({}, '', getFullPath(vm.$route));
 };
 
-export const snapShotWrapper = (component) => {
+export const snapShotWrapper = (component, isAsync) => {
   const wrapper = Vue.extend({
     template: ' <wrapper>\n' +
       '    <contentComponent></contentComponent>\n' +

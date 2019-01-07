@@ -1,26 +1,12 @@
-# example
+# vue-snapShot
 
-## Project setup
-```
-npm install
-```
+A tools for vue components to save and recovery data
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## use
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your tests
-```
-npm run test
-```
+```javascript
+import {snapShotWrapper} from "../../src/index"
+snapShotWrapper(component)
 
-### Lints and fixes files
-```
-npm run lint
 ```

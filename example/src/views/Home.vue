@@ -29,7 +29,7 @@
     methods: {
       click() {
         // this.$keepAlive.useInitData = true
-        this.$router.push('/other');
+        this.$router.push('/about');
       },
     },
     mounted() {
