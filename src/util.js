@@ -59,7 +59,6 @@ export const getRouteQuery = (vm) => {
 
 // 获得完整路径
 export const getFullPath = ({ path, query = {}, hash = '' }) => {
-  console.log(query);
   return (path || '/') + stringifyQuery(query) + hash;
 };
 
